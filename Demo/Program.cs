@@ -1,4 +1,5 @@
-﻿using Demo.Polymorphism;
+﻿using Demo.Binding;
+using Demo.Polymorphism;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Demo
@@ -46,6 +47,37 @@ namespace Demo
 
         #endregion
 
+
+        //public static void ProcessEmployee(FullTimeEmployee employee)
+        //{
+        //    if (employee is not null)
+        //    {
+        //        employee.GetEmployeeType();
+        //        employee.GetEmployeeData();
+        //    }
+        //}
+
+        // Not Overloading
+        //public static void ProcessEmployee(PartTimeEmployee employee)
+        //{
+        //    if (employee is not null)
+        //    {
+        //        employee.GetEmployeeType();
+        //        employee.GetEmployeeData();
+        //    }
+        //}
+
+        // Employee employee
+        // can refer => FullTimeEmployee
+        // can refer => PartTimeEmployee
+        public static void ProcessEmployee(Employee employee)
+        {
+            if (employee is not null)
+            {
+                employee.GetEmployeeType(); // Employee
+                employee.GetEmployeeData(); // FullTimeEmployee
+            }
+        }
         static void Main(string[] args)
         {
             #region Polymorhism (Overloading)
@@ -121,6 +153,28 @@ namespace Demo
             //object O = 2;
             //int X = (int) O;
             #endregion
+
+            FullTimeEmployee fullTimeEmployee = new FullTimeEmployee(10, "aliaa", 30, 6000);
+
+            ProcessEmployee(fullTimeEmployee);
+            // i am fulltime employee
+            // Fulltimeemployee Id = 10, name = aliaa, age = 30, salary = 6000
+
+            PartTimeEmployee partTimeEmployee = new PartTimeEmployee()
+            {
+                Id = 20,
+                Name = "Mohamed",
+                Age = 25,
+                CountOfHours = 8,
+                HourRate = 100
+            };
+            //partTimeEmployee.Id = 20;
+            //partTimeEmployee.Name = "Mohamed";
+            //partTimeEmployee.Age = 25;
+            //partTimeEmployee.CountOfHours = 8;
+            //partTimeEmployee.HourRate = 100;
+
+            //ProcessEmployee(partTimeEmployee); // invalid 
 
         }
     }
