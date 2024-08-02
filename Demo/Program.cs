@@ -65,18 +65,36 @@ namespace Demo
             // function overriding must be with virtual keyword in the base class
             // function overriding must be with override keyword in the derived class
 
-            TypeA typeA = new TypeA(10);
-            typeA.A = 100;
-            typeA.MyFun01();
-            typeA.MyFun02();
+            //TypeA typeA = new TypeA(10);
+            //typeA.A = 100;
+            //typeA.MyFun01();
+            //typeA.MyFun02();
 
-            TypeB typeB = new TypeB(10, 20);
-            typeB.A = 100;
-            typeB.B = 200;
-            typeB.MyFun01();
-            typeB.MyFun02();
+            //TypeB typeB = new TypeB(10, 20);
+            //typeB.A = 100;
+            //typeB.B = 200;
+            //typeB.MyFun01();
+            //typeB.MyFun02();
             #endregion
 
+            #region Binding
+
+            // ref from parent to child
+            TypeA refBase;
+            // declare for reference from type A
+            // refbase refer to an object from type A
+            // or it can refer to an object from any class that inherits from typeA
+
+            refBase = new TypeB(10, 20);
+            // binding is done at runtime
+
+            refBase.A = 100;
+            // refBase.B = 200; // invalid
+            refBase.MyFun01(); // override using new [static binding] Iam base [Parent]
+            refBase.MyFun02(); // override using verride keyword [Dynamic Binding] TypeB : A = 10, B = 2
+            
+            
+            #endregion
 
         }
     }
