@@ -80,20 +80,46 @@ namespace Demo
             #region Binding
 
             // ref from parent to child
-            TypeA refBase;
-            // declare for reference from type A
-            // refbase refer to an object from type A
-            // or it can refer to an object from any class that inherits from typeA
+            //TypeA refBase;
+            //// declare for reference from type A
+            //// refbase refer to an object from type A
+            //// or it can refer to an object from any class that inherits from typeA
 
-            refBase = new TypeB(10, 20);
-            // binding is done at runtime
+            //refBase = new TypeB(10, 20);
+            //// binding is done at runtime
 
-            refBase.A = 100;
-            // refBase.B = 200; // invalid
-            refBase.MyFun01(); // override using new [static binding] Iam base [Parent]
-            refBase.MyFun02(); // override using verride keyword [Dynamic Binding] TypeB : A = 10, B = 2
-            
-            
+            //refBase.A = 100;
+            //// refBase.B = 200; // invalid
+            //refBase.MyFun01(); // override using new [static binding] Iam base [Parent]
+            //refBase.MyFun02(); // override using verride keyword [Dynamic Binding] TypeB : A = 10, B = 2
+
+
+            #endregion
+
+            #region Not Binding
+
+            // ref from child to parent
+            //TypeB ChildRef = (TypeB) new TypeA(10); // invalid without casting
+            //// Not Binding Explict Casting
+            //// Unsafe casting
+
+            //TypeA typeA = new TypeA(10);
+            //TypeB typeB = (TypeB)typeA; // invalid without casting
+            //// (TybeB) => Casting operator - function
+            //// Not Binding Explict Casting
+            //// Unsafe casting
+            //Console.WriteLine(typeB.A);
+            //Console.WriteLine(typeB.B);
+            // invalid cast exception
+
+            //TypeA typeA = new TypeB(10, 20);
+            //TypeB typeB = (TypeB) typeA;
+
+            //Console.WriteLine(typeB.A);
+            //Console.WriteLine(typeB.B);
+
+            //object O = 2;
+            //int X = (int) O;
             #endregion
 
         }
